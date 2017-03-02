@@ -1,5 +1,6 @@
 ﻿using System.ServiceModel;
 using System.ServiceModel.Activation;
+using System.Web;
 
 namespace ConsoleApplication1
 {
@@ -10,6 +11,17 @@ namespace ConsoleApplication1
         public string GetFoo(string id)
         {
             return string.Format("foo{0}bar", id);
+        }
+
+        public FooBar GetFooJson(string id)
+        {
+            HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");
+            return new FooBar { Id = id, IsFoo = true };
+        }
+
+        public FooBar GetFooJsonInput(FooBar foobar)
+        {
+            return new FooBar { Id = foobar.Id, IsFoo = foobar.IsFoo, IsBar = foobar.IsBar };
         }
     }
 }

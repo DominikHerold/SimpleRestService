@@ -1,0 +1,15 @@
+<html>
+	<head>
+		
+	</head>
+	<body>
+		<script>
+			function update() {
+				window.fetch('http://localhost:8000/DEMOService/GetFooJson?id=foobar')
+					.then(response => response.json())
+					.then(state => {alert('foo');});
+			}			
+			update();
+		</script>
+	</body>
+</html>

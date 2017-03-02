@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	</head>
+	<body>
+		<script>
+        function update() {
+            $.ajax({
+				dataType: "json",				
+				url: "http://localhost:8000/DEMOService/GetFooJson?id=foobar",				
+				success: function(json){
+					alert('foo');
+				},
+				error: function(jqXHR, textStatus, errorThrown ){
+					console.log(jqXHR);
+					console.log(textStatus);
+					console.log(errorThrown);
+				}
+			});
+        }
+        
+        update();
+    </script>
+	</body>
+</html>
